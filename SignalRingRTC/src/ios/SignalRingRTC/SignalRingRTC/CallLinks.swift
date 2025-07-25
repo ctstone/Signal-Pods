@@ -80,21 +80,21 @@ public struct CallLinkRootKey: CustomStringConvertible {
 public struct CallLinkEpoch: CustomStringConvertible {
     public struct ValidationError: Error {}
     public static var SERIALIZED_SIZE = 4;
-
+    
     private var value: UInt32
 
     public var bytes: Data {
         get {
-            withUnsafeBytes(of: value.littleEndian) {
+            withUnsafeBytes(of: value.bigEndian) {
                 Data($0)
             }
         }
     }
-
+    
     private init(_ value: UInt32) {
         self.value = value
     }
-
+    
     public init(_ string: String) throws {
         var result: Self? = nil
         rtc_calllinks_CallLinkEpoch_parse(string, &result) { resultOpaquePtr, optional_value in
@@ -105,17 +105,15 @@ public struct CallLinkEpoch: CustomStringConvertible {
         }
         self = result
     }
-
+    
     public init(_ bytes: Data) throws {
         precondition(bytes.count == 4)
-        let value =
-            UInt32(bytes[0])       |
-            UInt32(bytes[1]) <<  8 |
-            UInt32(bytes[2]) << 16 |
-            UInt32(bytes[3]) << 24;
+        let value = bytes[0..<4].reduce(0) { accum, byte in
+            return (accum << 8) | UInt32(byte)
+        }
         self.init(value)
     }
-
+    
     public var description: String {
         var result: String? = nil
         let errorCStr = rtc_calllinks_CallLinkEpoch_toFormattedString(self.value, &result) { resultOpaquePtr, rtcString in
@@ -126,7 +124,7 @@ public struct CallLinkEpoch: CustomStringConvertible {
         }
         return result!
     }
-
+    
     // Internal: for FFI use.
     internal static func fromOptionalU32(_ optional_value: rtc_OptionalU32) -> Self? {
         if optional_value.valid {
@@ -135,7 +133,7 @@ public struct CallLinkEpoch: CustomStringConvertible {
             nil
         }
     }
-
+    
     // Internal: for FFI use.
     internal static func toOptionalU32(_ epoch: CallLinkEpoch?) -> rtc_OptionalU32 {
         if let epochId = epoch {
