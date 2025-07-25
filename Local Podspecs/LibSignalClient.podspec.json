@@ -2,11 +2,11 @@
   "name": "LibSignalClient",
   "version": "0.76.7",
   "summary": "A Swift wrapper library for communicating with the Signal messaging service.",
-  "homepage": "https://github.com/signalapp/libsignal",
+  "homepage": "https://github.com/ctstone/libsignal",
   "license": "AGPL-3.0-only",
   "authors": "Signal Messenger LLC",
   "source": {
-    "git": "https://github.com/signalapp/libsignal.git",
+    "git": "https://github.com/ctstone/libsignal.git",
     "tag": "v0.76.7"
   },
   "swift_versions": "5",

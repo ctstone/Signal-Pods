@@ -120,7 +120,7 @@ CHECKOUT OPTIONS:
     :commit: 60482f7c0341e7c13e037ae1edbe8b359de7e6f3
     :git: https://github.com/signalapp/libPhoneNumber-iOS
   LibSignalClient:
-    :commit: 0a2d5d094549680d3f380f4acb5b0ee31d20860e
+    :commit: 90b6090f94a2039f2a52907e9124a85edb87b377
     :git: https://github.com/ctstone/libsignal.git
   Mantle:
     :commit: e7e46253bb01ce39525d90aa69ed9e85e758bfc4
@@ -145,7 +145,7 @@ SPEC CHECKSUMS:
   GRDB.swift: 1395cb3556df6b16ed69dfc74c3886abc75d2825
   LibMobileCoin: 8503f567fa32184a5be7bc038fbd727747dd9991
   libPhoneNumber-iOS: 1a34106b49dc6e12a7f37eb9aee7c64011509547
-  LibSignalClient: d85c138e82a680f5d98c87641ea150e40f8fcddb
+  LibSignalClient: 37723fceab18be6b84a2d77bf5d401e27fe91bb9
   libwebp: 1b5562124e3ca3336fb7506e76501bed7758963a
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
   lottie-ios: fcb5e73e17ba4c983140b7d21095c834b3087418
